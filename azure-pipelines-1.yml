@@ -4,14 +4,11 @@
 # https://aka.ms/yaml
 
 trigger:
-- master
-
-pool:
-  vmImage: ubuntu-latest
-
-steps:
-- task: ArchiveFiles@2
-  inputs:
-    rootFolderOrFile: '$(build.sourcesDirectory)'
-    includeRootFolder: false
-- task: PublishBuildArtifacts@1
+ branches:
+   include:
+     - features/*
+     exclude: 
+     - features/experimental/*
+  paths:
+  exclude:
+  - README.md
